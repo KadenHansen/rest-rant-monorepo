@@ -17,7 +17,7 @@ function CurrentUserProvider({ children }){
             setCurrentUser(user)
         }
         getLoggedInUser()
-    })
+    }, [])
     window.setCurrentUser = setCurrentUser
     return (
         <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
