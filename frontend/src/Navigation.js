@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { useHistory } from "react-router";
 import { CurrentUser } from './contexts/CurrentUser';
 
@@ -11,23 +11,33 @@ function Navigation() {
     let loginActions = (
         <>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => history.push("/sign-up")}>
+                <button onClick={() => history.push("/sign-up")}>
                     Sign Up
-                </a>
+                </button>
             </li>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => history.push("/login")}>
+                <button onClick={() => history.push("/login")}>
                     Login
-                </a>
+                </button>
             </li>
         </>
     )
 
     if (currentUser) {
         loginActions = (
-            <li style={{ float: 'right' }}>
-                Logged in as {currentUser.firstName} {currentUser.lastName}
-            </li>
+            <>
+                <li style={{ float: 'right' }}>
+                    <button onClick={() => { 
+                        localStorage.clear() 
+                        window.location.reload()
+                    }}>
+                        Log Out
+                    </button>
+                </li>
+                <li style={{ float: 'right', color: 'white' }}>
+                    Logged in as {currentUser.firstName} {currentUser.lastName}
+                </li>
+            </>
         )
     }
 
@@ -35,19 +45,19 @@ function Navigation() {
         <nav>
             <ul>
                 <li>
-                    <a href="#" onClick={() => history.push("/")}>
+                    <button onClick={() => history.push("/")}>
                         Home
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" onClick={() => history.push("/places")}>
+                    <button onClick={() => history.push("/places")}>
                         Places
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" onClick={() => history.push("/places/new")}>
+                    <button onClick={() => history.push("/places/new")}>
                         Add Place
-                    </a>
+                    </button>
                 </li>
                 {loginActions}
             </ul>
