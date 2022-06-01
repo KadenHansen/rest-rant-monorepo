@@ -8,7 +8,15 @@ h1 {
     color: cornflowerblue;
 }
 
-h2 {
+h2 button {
+    color: cornflowerblue;
+    background: none !important;
+    border: none;
+    font-size: 1.5em;
+}
+
+
+h2 button:hover {
     color: lightblue;
 }
 
@@ -39,7 +47,14 @@ nav a {
     font-size: 1.5em;
 }
 
-nav a:hover {
+nav button {
+    background: none !important;
+    border: none;
+    font-size: 1.5em;
+    color: white;
+}
+
+nav button:hover {
     color: lightblue;
     text-decoration: none;
 }
